@@ -1,10 +1,11 @@
-import React from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
+import AppTabs from './components/AppTabs'
 
 function App() {
   return (
-    <div>
-      XSeo app
-    </div>
+    <ChakraProvider>
+      <AppTabs />
+    </ChakraProvider>
   )
 }
 
