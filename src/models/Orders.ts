@@ -15,6 +15,20 @@ export type Order = {
 
 export type Orders = Order[]
 
+export type OrdersFilters = {
+  id: string
+  name: string
+  table: string
+  date: Date
+}
+
+export const blankOrdersFilters: OrdersFilters = {
+  id: '',
+  name: '',
+  table: '',
+  date: new Date(),
+}
+
 export const MOCK_ORDERS: Orders = [
   {
     _id: '10000',

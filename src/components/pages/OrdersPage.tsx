@@ -1,17 +1,13 @@
 import { useState } from "react"
 import { Card, CardBody, CardHeader, Grid, GridItem, Heading } from "@chakra-ui/react"
 import OrdersTable from "../orders/OrdersTable"
-import { MOCK_ORDERS, Order } from "../../models/Orders"
+import { blankOrdersFilters, Order, OrdersFilters } from "../../models/Orders"
 import OrderDetail from "../orders/OrderDetail"
-import OrderStats from "../orders/OrderStats"
+import OrderFilters from "../orders/OrderFilters"
 
 const OrdersPage: React.FC = () => {
   const [currentOrder, setCurrentOrder] = useState<Order | undefined>(undefined)
-
-  const orderStats = {
-    ordersNumber: MOCK_ORDERS.length,
-    total: MOCK_ORDERS.length,
-  }
+  const [ordersFilters, setOldersFilters] = useState<OrdersFilters>(blankOrdersFilters)
 
   return (
     <Grid
@@ -31,12 +27,12 @@ const OrdersPage: React.FC = () => {
           </CardHeader>
 
           <CardBody>
-            <OrdersTable setCurrentOrder={setCurrentOrder} />
+            <OrdersTable setCurrentOrder={setCurrentOrder} filters={ordersFilters} />
           </CardBody>
         </Card>
       </GridItem>
       <GridItem pl='0' area={'stats'}>
-        <OrderStats stats={orderStats} />
+        <OrderFilters ordersFilters={ordersFilters} setOrdersFilters={setOldersFilters} />
       </GridItem>
       <GridItem p='0' area={'detail'}>
         <OrderDetail order={currentOrder} />

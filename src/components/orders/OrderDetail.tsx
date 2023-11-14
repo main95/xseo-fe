@@ -1,9 +1,13 @@
+import { DeleteIcon, LockIcon, QuestionOutlineIcon, UnlockIcon } from "@chakra-ui/icons"
 import {
   Box,
+  Button,
   Card,
   CardBody,
   CardHeader,
+  Flex,
   Heading,
+  IconButton,
   Stack,
   StackDivider,
   Table,
@@ -29,7 +33,29 @@ const OrderDetail: React.FC<Props> = ({ order }) => {
   return (
     <Card pb='4'>
       <CardHeader pb='0'>
-        <Heading size='md'>Dettaglio ordine</Heading>
+        <Flex gap='4' alignItems='center' justify='space-between'>
+          <Heading size='md'>Dettaglio ordine</Heading>
+          <Flex flex='1' gap='2' flexWrap='wrap'>
+            <Button leftIcon={<LockIcon />} colorScheme='gray' variant='solid' size='sm'>
+              Ricevuta
+            </Button>
+            <Button leftIcon={<UnlockIcon />} colorScheme='gray' variant='solid' size='sm'>
+              Ristampa
+            </Button>
+            <IconButton
+              colorScheme='green'
+              aria-label='Search database'
+              icon={<QuestionOutlineIcon />}
+              size='sm'
+            />
+            <IconButton
+              colorScheme='red'
+              aria-label='Search database'
+              icon={<DeleteIcon />}
+              size='sm'
+            />
+          </Flex>
+        </Flex>
       </CardHeader>
 
       {order && <CardBody>
