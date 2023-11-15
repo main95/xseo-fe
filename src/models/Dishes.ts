@@ -6,6 +6,7 @@ type Dish = {
   price: number
   quantity: number
   category: DishCategory
+  printed: boolean
 }
 
 export type Dishes = Dish[]

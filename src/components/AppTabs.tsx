@@ -1,5 +1,5 @@
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
-import DashboardPage from "./pages/DashboardPage"
+// import DashboardPage from "./pages/DashboardPage"
 import DevicesPage from "./pages/DevicesPage"
 import DishListPage from "./pages/DishListPage"
 import EventPage from "./pages/EventPage"
@@ -20,7 +20,8 @@ const AppTabs: React.FC = () => {
 
       <TabPanels>
         <TabPanel>
-          <DashboardPage />
+          {/* <DashboardPage /> */}
+          <OrdersPage />
         </TabPanel>
         <TabPanel>
           <EventPage />

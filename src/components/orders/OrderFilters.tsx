@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   CardBody,
+  CardFooter,
   CardHeader,
   Flex,
   Heading,
@@ -11,14 +12,16 @@ import {
   Stack,
   StackDivider,
 } from "@chakra-ui/react"
-import { OrdersFilters } from "../../models/Orders"
+import { useState } from "react"
+import { blankOrdersFilters, OrdersFilters } from "../../models/Orders"
 
 type Props = {
-  ordersFilters: OrdersFilters
   setOrdersFilters: (value: OrdersFilters) => void
 }
 
-const OrderFilters: React.FC<Props> = ({ ordersFilters, setOrdersFilters }) => {
+const OrderFilters: React.FC<Props> = ({ setOrdersFilters }) => {
+  const [tmpOrdersFilters, setTmpOrdersFilters] = useState<OrdersFilters>(blankOrdersFilters)
+
   return (
     <Card>
       <CardHeader pb='0'>
@@ -43,8 +46,8 @@ const OrderFilters: React.FC<Props> = ({ ordersFilters, setOrdersFilters }) => {
                 variant='outline'
                 placeholder='Nome'
                 onChange={(e) => {
-                  setOrdersFilters({
-                    ...ordersFilters,
+                  setTmpOrdersFilters({
+                    ...tmpOrdersFilters,
                     name: e.target.value,
                   })
                 }} />
@@ -57,14 +60,12 @@ const OrderFilters: React.FC<Props> = ({ ordersFilters, setOrdersFilters }) => {
                 variant='outline'
                 placeholder='Tavolo'
                 onChange={(e) => {
-                  setOrdersFilters({
-                    ...ordersFilters,
+                  setTmpOrdersFilters({
+                    ...tmpOrdersFilters,
                     table: e.target.value,
                   })
                 }} />
             </Box>
-          </Stack>
-          <Stack divider={<StackDivider />} spacing='4' direction='row'>
             <Box>
               <Heading size='xs' textTransform='uppercase' pb='1'>
                 Numero ordine
@@ -73,8 +74,8 @@ const OrderFilters: React.FC<Props> = ({ ordersFilters, setOrdersFilters }) => {
                 variant='outline'
                 placeholder='Numero ordine'
                 onChange={(e) => {
-                  setOrdersFilters({
-                    ...ordersFilters,
+                  setTmpOrdersFilters({
+                    ...tmpOrdersFilters,
                     id: e.target.value,
                   })
                 }} />
@@ -82,6 +83,35 @@ const OrderFilters: React.FC<Props> = ({ ordersFilters, setOrdersFilters }) => {
           </Stack>
         </Stack>
       </CardBody>
+      <CardFooter pt='0'>
+        <Stack spacing='4' direction='row'>
+          <Button
+            variant='ghost'
+            colorScheme='gray'
+            onClick={() => {
+              setOrdersFilters({
+                ...blankOrdersFilters,
+              })
+              setTmpOrdersFilters({
+                ...blankOrdersFilters,
+              })
+            }}
+          >
+            Reset
+          </Button>
+          <Button
+            variant='solid'
+            colorScheme='teal'
+            onClick={() => {
+              setOrdersFilters({
+                ...tmpOrdersFilters,
+              })
+            }}
+          >
+            Applica
+          </Button>
+        </Stack>
+      </CardFooter>
     </Card>
   )
 }

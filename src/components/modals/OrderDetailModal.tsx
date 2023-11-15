@@ -11,17 +11,11 @@ import {
   ModalOverlay,
   Stack,
   StackDivider,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
   Text,
-  Th,
-  Thead,
-  Tr,
 } from "@chakra-ui/react"
 import { Order } from "../../models/Orders"
 import { getCategoryButtons } from "../libs/order"
+import OrderDishesDetailTable from "../orders/OrderDishesDetailTable"
 
 type Props = {
   isOpen: boolean
@@ -71,32 +65,7 @@ const OrderDetailModal: React.FC<Props> = ({ isOpen, order, onClose }) => {
               <Heading size='xs' textTransform='uppercase'>
                 Dettaglio
               </Heading>
-              <TableContainer>
-                {order.detail.length ? <Table variant='striped' colorScheme='gray' size='sm'>
-                  <Thead>
-                    <Tr>
-                      <Th>Nome</Th>
-                      <Th isNumeric>Prezzo</Th>
-                      <Th isNumeric>Quantità</Th>
-                      <Th>Portata</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    {order.detail.map(d => {
-                      return (
-                        <Tr onClick={() => {
-                          console.log('ok click')
-                        }}>
-                          <Td>{d.name}</Td>
-                          <Td isNumeric>{d.price}</Td>
-                          <Td isNumeric>{d.quantity}</Td>
-                          <Td>{d.category}</Td>
-                        </Tr>
-                      )
-                    })}
-                  </Tbody>
-                </Table> : null}
-              </TableContainer>
+              <OrderDishesDetailTable detail={order.detail} />
             </Box>
           </Stack>
         </ModalBody>

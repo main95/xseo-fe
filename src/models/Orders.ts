@@ -45,42 +45,49 @@ export const MOCK_ORDERS: Orders = [
         price: 0.00,
         quantity: 6,
         category: 'BEV',
+        printed: true,
       }, {
         _id: '000001',
         name: 'bevanda 1',
         price: 1.00,
         quantity: 1,
         category: 'BEV',
+        printed: true,
       }, {
         _id: '000002',
         name: 'bevanda 2',
         price: 2.00,
         quantity: 3,
         category: 'BEV',
+        printed: true,
       }, {
         _id: '000003',
         name: 'primo 1',
         price: 9.00,
         quantity: 1,
         category: 'PRI',
+        printed: true,
       }, {
         _id: '000004',
         name: 'primo 2',
         price: 8.00,
         quantity: 2,
         category: 'SEC',
+        printed: false,
       }, {
         _id: '000005',
         name: 'secondo 1',
         price: 11.00,
         quantity: 2,
         category: 'SEC',
+        printed: false,
       }, {
         _id: '000006',
         name: 'secondo 2',
         price: 12.00,
         quantity: 4,
         category: 'SEC',
+        printed: false,
       }
     ]
   }, {

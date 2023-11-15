@@ -10,19 +10,13 @@ import {
   IconButton,
   Stack,
   StackDivider,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
   Text,
-  Th,
-  Thead,
-  Tr,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import { Order } from "../../models/Orders"
 import Alert from "../alerts/Alert"
 import OrderDetailModal from "../modals/OrderDetailModal"
+import OrderDishesDetailTable from "./OrderDishesDetailTable"
 
 type Props = {
   order: Order | undefined
@@ -111,32 +105,7 @@ const OrderDetail: React.FC<Props> = ({ order }) => {
               <Heading size='xs' textTransform='uppercase'>
                 Dettaglio
               </Heading>
-              <TableContainer>
-                {order.detail.length ? <Table variant='striped' colorScheme='gray' size='sm'>
-                  <Thead>
-                    <Tr>
-                      <Th>Nome</Th>
-                      <Th isNumeric>Prezzo</Th>
-                      <Th isNumeric>Quantità</Th>
-                      <Th>Portata</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    {order.detail.map(d => {
-                      return (
-                        <Tr onClick={() => {
-                          console.log('ok click')
-                        }}>
-                          <Td>{d.name}</Td>
-                          <Td isNumeric>{d.price}</Td>
-                          <Td isNumeric>{d.quantity}</Td>
-                          <Td>{d.category}</Td>
-                        </Tr>
-                      )
-                    })}
-                  </Tbody>
-                </Table> : null}
-              </TableContainer>
+              <OrderDishesDetailTable detail={order.detail} />
             </Box>
           </Stack>
         </CardBody>}
