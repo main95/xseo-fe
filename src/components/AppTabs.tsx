@@ -21,7 +21,7 @@ const AppTabs: React.FC = () => {
       <TabPanels>
         <TabPanel>
           {/* <DashboardPage /> */}
-          <OrdersPage />
+          <DishListPage />
         </TabPanel>
         <TabPanel>
           <EventPage />

@@ -68,7 +68,7 @@ const OrderFilters: React.FC<Props> = ({ setOrdersFilters }) => {
             </Box>
             <Box>
               <Heading size='xs' textTransform='uppercase' pb='1'>
-                Numero ordine
+                Numero
               </Heading>
               <Input
                 variant='outline'
