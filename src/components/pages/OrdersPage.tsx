@@ -1,27 +1,19 @@
 import { useState } from "react"
-import { Button, Card, CardBody, CardHeader, Flex, Grid, GridItem, Heading } from "@chakra-ui/react"
+import { Button, Card, CardBody, CardHeader, Flex, GridItem, Heading } from "@chakra-ui/react"
 import OrdersTable from "../orders/OrdersTable"
 import { blankOrdersFilters, Order, OrdersFilters } from "../../models/Orders"
 import OrderDetail from "../orders/OrderDetail"
 import OrderFilters from "../orders/OrderFilters"
 import { DeleteIcon } from "@chakra-ui/icons"
+import { PageTablesWrapper } from "../CommonComponents"
 
 const OrdersPage: React.FC = () => {
   const [currentOrder, setCurrentOrder] = useState<Order | undefined>(undefined)
-  const [ordersFilters, setOldersFilters] = useState<OrdersFilters>(blankOrdersFilters)
+  const [ordersFilters, setOrdersFilters] = useState<OrdersFilters>(blankOrdersFilters)
   const [ordersToDelete, setOrdersToDelete] = useState<string[]>([])
 
   return (
-    <Grid
-      templateAreas={`"table stats"
-                      "table detail"`}
-      gridTemplateRows={'1fr 2fr'}
-      gridTemplateColumns={'3fr 2fr'}
-      h='100%'
-      gap='2'
-      color='blackAlpha.700'
-      fontWeight='bold'
-    >
+    <PageTablesWrapper>
       <GridItem p='2' area={'table'}>
         <Card p='0'>
           <CardHeader pb='0'>
@@ -52,12 +44,12 @@ const OrdersPage: React.FC = () => {
         </Card>
       </GridItem>
       <GridItem pl='0' area={'stats'}>
-        <OrderFilters setOrdersFilters={setOldersFilters} />
+        <OrderFilters setOrdersFilters={setOrdersFilters} />
       </GridItem>
       <GridItem p='0' area={'detail'}>
         <OrderDetail order={currentOrder} />
       </GridItem>
-    </Grid>
+    </PageTablesWrapper>
   )
 }
 

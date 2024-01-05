@@ -5,7 +5,7 @@ import { PageWrapper } from "../CommonComponents"
 import DeviceDetail from "../devices/DeviceDetail"
 import DevicesTable from "../devices/DevicesTable"
 
-const DevicesPage: React.FC = () => {
+const DevicesPage = () => {
   const [currentDevice, setCurrentDevice] = useState<Device | undefined>(undefined)
 
   return (
